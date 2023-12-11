@@ -49,24 +49,17 @@ void AFrogCharacter::BeginHop()
 void AFrogCharacter::Hop()
 {
 	const float EndHopTick = UGameplayStatics::GetRealTimeSeconds(GetWorld());
-	UE_LOG(LogTemp, Warning, TEXT("Max Hop Time: %f"), MaxHopTime);
-	UE_LOG(LogTemp, Warning, TEXT("Max Hop Force: %f"), MaxHopForce);
 	const float HopForce = FMath::Max((EndHopTick - StartHopTick) / MaxHopTime, 1.0f) * MaxHopForce;
-	UE_LOG(LogTemp, Warning, TEXT("Hop Force: %f"), HopForce);
-	const FVector HalfVector = (GetActorUpVector() + UKismetMathLibrary::GetForwardVector(GetControlRotation())) / 2;
-	UE_LOG(LogTemp, Warning, TEXT("Half Vector: %s"), *HalfVector.ToString());
+	FVector CameraForwardVector = UKismetMathLibrary::GetForwardVector(GetControlRotation());
+	CameraForwardVector.Z = FMath::Max(0, CameraForwardVector.Z);
+	const FVector HalfVector = (GetActorUpVector() + CameraForwardVector) / 2;
 	const FVector HopForceVector = HalfVector.GetUnsafeNormal() * HopForce;
-	//CapsuleCollider->AddForce(HopForceVector);
-	//GetMesh()->AddForce(HopForceVector);
 	ActorBody->AddForceAtLocation(HopForceVector, CapsuleCollider->GetComponentLocation());
-	UE_LOG(LogTemp, Warning, TEXT("Hop Force: %s"), *HopForceVector.ToString());
-	//UCharacterMovementComponent* MovementComponent = GetCharacterMovement();
-	//MovementComponent->IsMovingO
 }
 
 void AFrogCharacter::Look(const FInputActionValue& Value)
 {
 	const FVector2D LookVector = Value.Get<FVector2D>();
 	AddControllerYawInput(LookVector.X);
-	AddControllerPitchInput(LookVector.Y);
+	AddControllerPitchInput(-LookVector.Y);
 }

@@ -19,10 +19,12 @@ class FROGGER_API AFrogCharacter : public ACharacter
 private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
-	TObjectPtr<USpringArmComponent> SpringArmComponent;
+	USpringArmComponent* SpringArmComponent;
 	UPROPERTY(VisibleAnywhere, Category = "Components")
-	TObjectPtr<UCameraComponent> CameraComponent;
+	UCameraComponent* CameraComponent;
+
 	TObjectPtr<UCapsuleComponent> CapsuleCollider;
+
 	UPrimitiveComponent* ActorBody;
 
 	float StartHopTick;
