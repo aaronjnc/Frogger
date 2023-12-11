@@ -29,6 +29,7 @@ private:
 
 	float StartHopTick;
 	bool bIsJumping = false;
+	float CharacterMass;
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float MaxHopForce;

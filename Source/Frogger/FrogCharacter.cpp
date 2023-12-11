@@ -43,18 +43,27 @@ void AFrogCharacter::Tick(float DeltaTime)
 
 void AFrogCharacter::BeginHop()
 {
-	StartHopTick = UGameplayStatics::GetRealTimeSeconds(GetWorld());
+	UE_LOG(LogTemp, Warning, TEXT("Z Speed: %f"), ActorBody->GetComponentVelocity().Z);
+	if (FMath::RoundToInt(ActorBody->GetComponentVelocity().Z) == 0)
+	{
+		StartHopTick = UGameplayStatics::GetRealTimeSeconds(GetWorld());
+		bIsJumping = true;
+	}
 }
 
 void AFrogCharacter::Hop()
 {
-	const float EndHopTick = UGameplayStatics::GetRealTimeSeconds(GetWorld());
-	const float HopForce = FMath::Max((EndHopTick - StartHopTick) / MaxHopTime, 1.0f) * MaxHopForce;
-	FVector CameraForwardVector = UKismetMathLibrary::GetForwardVector(GetControlRotation());
-	CameraForwardVector.Z = FMath::Max(0, CameraForwardVector.Z);
-	const FVector HalfVector = (GetActorUpVector() + CameraForwardVector) / 2;
-	const FVector HopForceVector = HalfVector.GetUnsafeNormal() * HopForce;
-	ActorBody->AddForceAtLocation(HopForceVector, CapsuleCollider->GetComponentLocation());
+	if (bIsJumping)
+	{
+		const float EndHopTick = UGameplayStatics::GetRealTimeSeconds(GetWorld());
+		const float HopForce = FMath::Max((EndHopTick - StartHopTick) / MaxHopTime, 1.0f) * MaxHopForce;
+		FVector CameraForwardVector = UKismetMathLibrary::GetForwardVector(GetControlRotation());
+		CameraForwardVector.Z = FMath::Max(0, CameraForwardVector.Z);
+		const FVector HalfVector = (GetActorUpVector() + CameraForwardVector) / 2;
+		const FVector HopForceVector = HalfVector.GetUnsafeNormal() * HopForce;
+		ActorBody->AddForceAtLocation(HopForceVector, CapsuleCollider->GetComponentLocation());
+		bIsJumping = false;
+	}
 }
 
 void AFrogCharacter::Look(const FInputActionValue& Value)
