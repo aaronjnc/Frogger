@@ -8,6 +8,8 @@
 
 class USpringArmComponent;
 class UCameraComponent;
+struct FInputActionValue;
+class UCapsuleComponent;
 
 UCLASS()
 class FROGGER_API AFrogCharacter : public ACharacter
@@ -20,20 +22,35 @@ private:
 	TObjectPtr<USpringArmComponent> SpringArmComponent;
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	TObjectPtr<UCameraComponent> CameraComponent;
+	TObjectPtr<UCapsuleComponent> CapsuleCollider;
+	UPrimitiveComponent* ActorBody;
+
+	float StartHopTick;
+	bool bIsJumping = false;
+
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float MaxHopForce;
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float MaxHopTime;
 
 public:
 	// Sets default values for this character's properties
 	AFrogCharacter();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	UFUNCTION()
+	void BeginHop();
+
+	UFUNCTION()
+	void Hop();
+
+	UFUNCTION()
+	void Look(const FInputActionValue& Value);
+	
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
 };
