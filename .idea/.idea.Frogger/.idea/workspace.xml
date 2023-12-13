@@ -6,8 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="361d4adf-1c1a-4bba-9854-93b5be69aa2e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frogger.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/Frogger.uproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Frogger/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Frogger/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Frogger/Blueprints/BP_FrogCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Frogger/Blueprints/BP_FrogCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Frogger/FrogCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Frogger/FrogCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Frogger/FrogCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Frogger/FrogCharacter.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,14 +24,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="C++ Project.Frogger">
     <configuration name="Frogger" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -153,6 +155,7 @@
       <option name="presentableId" value="Default" />
       <updated>1702236890551</updated>
       <workItem from="1702236894838" duration="31000" />
+      <workItem from="1702268526494" duration="25000" />
     </task>
     <servers />
   </component>
