@@ -17,6 +17,7 @@ void AFrogController::BeginPlay()
 
 	PlayerCharacter = Cast<AFrogCharacter>(GetPawn());
 	SetupInputComponent();
+	SetShowMouseCursor(false);
 }
 
 void AFrogController::SetupInputComponent()

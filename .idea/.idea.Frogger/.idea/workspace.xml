@@ -7,9 +7,19 @@
   <component name="ChangeListManager">
     <list default="true" id="361d4adf-1c1a-4bba-9854-93b5be69aa2e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Frogger/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Frogger/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Frogger/Assets/Materials/PM_NoBounce.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Frogger/Assets/Materials/PM_NoBounce.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Frogger/Assets/Meshes/Log/stylized_log.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Frogger/Assets/Meshes/Log/stylized_log.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Frogger/Blueprints/BP_FrogCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Frogger/Blueprints/BP_FrogCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Frogger/Blueprints/Obstacles/BP_Bus.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Frogger/Blueprints/Obstacles/BP_Bus.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Frogger/Blueprints/Obstacles/BP_Car.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Frogger/Blueprints/Obstacles/BP_Car.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Frogger/Blueprints/Obstacles/BP_Turtle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Frogger/Blueprints/Obstacles/BP_Turtle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Frogger/Input/IMC_Frog.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Frogger/Input/IMC_Frog.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Frogger/Maps/TestLevel.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Frogger/Maps/TestLevel.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frogger.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/Frogger.uproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Frogger/FrogCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Frogger/FrogCharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Frogger/FrogCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Frogger/FrogCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Frogger/FrogController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Frogger/FrogController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Frogger/MovingObstacle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Frogger/MovingObstacle.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +166,10 @@
       <updated>1702236890551</updated>
       <workItem from="1702236894838" duration="31000" />
       <workItem from="1702268526494" duration="25000" />
+      <workItem from="1702460553378" duration="1040000" />
+      <workItem from="1702472082427" duration="1000" />
+      <workItem from="1702473835529" duration="8000" />
+      <workItem from="1702478864165" duration="2000" />
     </task>
     <servers />
   </component>
