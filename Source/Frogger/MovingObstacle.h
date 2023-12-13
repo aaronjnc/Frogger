@@ -13,13 +13,15 @@ class FROGGER_API AMovingObstacle : public APawn
 {
 	GENERATED_BODY()
 
+protected:
+	
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float Speed;
+
 private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UStaticMeshComponent* ObstacleMesh;
-	
-	UPROPERTY(EditAnywhere, Category = "Movement")
-	float Speed;
 
 	FVector MoveDir;
 

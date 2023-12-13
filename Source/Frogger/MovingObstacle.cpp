@@ -41,5 +41,9 @@ void AMovingObstacle::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UP
 void AMovingObstacle::BeginPlay()
 {
 	Super::BeginPlay();
-	ObstacleMesh->OnComponentHit.AddDynamic(this, &AMovingObstacle::OnHit);
+
+	if (bIsDeadly)
+	{
+		ObstacleMesh->OnComponentHit.AddDynamic(this, &AMovingObstacle::OnHit);
+	}
 }
