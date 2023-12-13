@@ -34,6 +34,7 @@ public:
 
 	virtual void Tick(float DeltaSeconds) override;
 
+	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 protected:
