@@ -2,7 +2,10 @@
 
 
 #include "MovingObstacle.h"
+
+#include "FrogCharacter.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Components/StaticMeshComponent.h"
 
 // Sets default values
 AMovingObstacle::AMovingObstacle()
@@ -12,19 +15,31 @@ AMovingObstacle::AMovingObstacle()
 
 	ObstacleMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Obstacle Mesh"));
 	RootComponent = ObstacleMesh;
-
-	ProjectilePawnMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Pawn Movement"));
 }
 
 void AMovingObstacle::SetMoveDirection(FVector Direction)
 {
-	ProjectilePawnMovement->Velocity = Direction;
-	ProjectilePawnMovement->InitialSpeed = Speed;
+	MoveDir = Direction;
+}
+
+void AMovingObstacle::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+
+	SetActorLocation(GetActorLocation() + MoveDir * Speed * DeltaSeconds);
+}
+
+void AMovingObstacle::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
+	FVector NormalImpulse, const FHitResult& Hit)
+{
+	if (OtherActor->IsA<AFrogCharacter>())
+	{
+		Cast<AFrogCharacter>(OtherActor)->Kill();
+	}
 }
 
 void AMovingObstacle::BeginPlay()
 {
 	Super::BeginPlay();
-
-	ActorBody = Cast<UPrimitiveComponent>(GetRootComponent());
+	ObstacleMesh->OnComponentHit.AddDynamic(this, &AMovingObstacle::OnHit);
 }

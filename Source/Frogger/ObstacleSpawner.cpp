@@ -46,10 +46,13 @@ void AObstacleSpawner::SpawnObstacle()
 	}
 	else
 	{
-		const FActorSpawnParameters SpawnParameters;
+		FActorSpawnParameters SpawnParameters;
+		SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 		const FRotator SpawnRotation = MoveDir.Rotation();
 		SpawnActor = GetWorld()->SpawnActor<AMovingObstacle>(ObstacleClass, SpawnPoint->GetComponentLocation(), SpawnRotation, SpawnParameters);
 	}
+	if (!SpawnActor)
+		return;
 	SpawnActor->SetActorLocation(SpawnPoint->GetComponentLocation());
 	SpawnActor->SetActorHiddenInGame(false);
 	SpawnActor->SetMoveDirection(MoveDir);
