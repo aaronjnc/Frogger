@@ -27,6 +27,8 @@ private:
 
 	UPrimitiveComponent* ActorBody;
 
+	TWeakObjectPtr<UCharacterMovementComponent> MovementComponent;
+
 	float StartHopTick;
 	bool bIsJumping = false;
 	float CharacterMass;
@@ -35,6 +37,10 @@ private:
 	float MaxHopForce;
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float MaxHopTime;
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float MoveForce;
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float MoveAngle;
 
 public:
 	// Sets default values for this character's properties
@@ -52,10 +58,15 @@ public:
 	UFUNCTION()
 	void Look(const FInputActionValue& Value);
 
+	UFUNCTION()
+	void Move(const FInputActionValue& Value);
+
 	void Kill();
 	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	bool IsGrounded() const;
 
 };

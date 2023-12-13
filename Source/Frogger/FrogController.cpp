@@ -34,5 +34,6 @@ void AFrogController::SetupInputComponent()
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, PlayerCharacter.Get(), &AFrogCharacter::BeginHop);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Canceled, PlayerCharacter.Get(), &AFrogCharacter::Hop);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, PlayerCharacter.Get(), &AFrogCharacter::Hop);
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, PlayerCharacter.Get(), &AFrogCharacter::Move);
 	}
 }

@@ -32,6 +32,17 @@ void AFrogCharacter::BeginPlay()
 
 	CapsuleCollider = Cast<UCapsuleComponent>(GetCapsuleComponent());
 	ActorBody = Cast<UPrimitiveComponent>(GetRootComponent());
+	MovementComponent = Cast<UCharacterMovementComponent>(GetMovementComponent());
+}
+
+bool AFrogCharacter::IsGrounded() const
+{
+	FHitResult HitResult;
+	const FVector StartLoc = CapsuleCollider->GetComponentLocation();
+	const FVector EndLoc = StartLoc - GetActorUpVector() * CapsuleCollider->GetUnscaledCapsuleHalfHeight() - .1;
+	FCollisionQueryParams QueryParams;
+	QueryParams.AddIgnoredActor(this);
+	return GetWorld()->LineTraceSingleByChannel(HitResult, StartLoc, EndLoc, ECollisionChannel::ECC_Visibility, QueryParams);;
 }
 
 // Called every frame
@@ -43,8 +54,7 @@ void AFrogCharacter::Tick(float DeltaTime)
 
 void AFrogCharacter::BeginHop()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Z Speed: %f"), ActorBody->GetComponentVelocity().Z);
-	if (FMath::RoundToInt(ActorBody->GetComponentVelocity().Z) == 0)
+	if (IsGrounded())
 	{
 		StartHopTick = UGameplayStatics::GetRealTimeSeconds(GetWorld());
 		bIsJumping = true;
@@ -71,6 +81,24 @@ void AFrogCharacter::Look(const FInputActionValue& Value)
 	const FVector2D LookVector = Value.Get<FVector2D>();
 	AddControllerYawInput(LookVector.X);
 	AddControllerPitchInput(-LookVector.Y);
+}
+
+void AFrogCharacter::Move(const FInputActionValue& Value)
+{
+	if (IsGrounded())
+	{
+		const FVector2D MoveDir = Value.Get<FVector2D>();
+		FVector CameraForwardVector = UKismetMathLibrary::GetForwardVector(GetControlRotation());
+		CameraForwardVector.Z = 0;
+		CameraForwardVector *= MoveDir.Y;
+		FVector CameraRightVector = UKismetMathLibrary::GetRightVector(GetControlRotation());
+		CameraRightVector.Z = 0;
+		CameraRightVector *= MoveDir.X;
+		FVector FinalMoveDir = CameraForwardVector + CameraRightVector;
+		FinalMoveDir.Z = FMath::Cos(MoveAngle);
+		FinalMoveDir.Normalize();
+		ActorBody->AddForceAtLocation(FinalMoveDir * MoveForce, CapsuleCollider->GetComponentLocation());
+	}
 }
 
 void AFrogCharacter::Kill()
