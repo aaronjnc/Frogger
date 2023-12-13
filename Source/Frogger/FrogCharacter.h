@@ -51,6 +51,8 @@ public:
 
 	UFUNCTION()
 	void Look(const FInputActionValue& Value);
+
+	void Kill();
 	
 protected:
 	// Called when the game starts or when spawned
