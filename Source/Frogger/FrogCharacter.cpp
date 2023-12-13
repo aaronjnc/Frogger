@@ -72,3 +72,8 @@ void AFrogCharacter::Look(const FInputActionValue& Value)
 	AddControllerYawInput(LookVector.X);
 	AddControllerPitchInput(-LookVector.Y);
 }
+
+void AFrogCharacter::Kill()
+{
+	
+}

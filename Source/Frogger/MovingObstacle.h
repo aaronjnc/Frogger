@@ -21,17 +21,21 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float Speed;
 
-	UPrimitiveComponent* ActorBody;
+	FVector MoveDir;
 
-	UPROPERTY(EditAnywhere, Category = "Components")
-	UProjectileMovementComponent* ProjectilePawnMovement;
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	bool bIsDeadly;
 
 public:
 	// Sets default values for this pawn's properties
 	AMovingObstacle();
 
 	void SetMoveDirection(FVector Direction);
-	
+
+	virtual void Tick(float DeltaSeconds) override;
+
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
 protected:
 
 	virtual void BeginPlay() override;
